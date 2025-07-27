@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0093E9" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#4B6CB7" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#80D0C7" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <!-- Particle definitions -->
+    <circle id="dot" cx="0" cy="0" r="3" fill="white" opacity="0.7"/>
+    <polygon id="star" points="0,0 2,5 0,10 5,3 10,10 8,5 10,0 5,3" fill="white" opacity="0.5"/>
+    
+    <!-- Geometric shapes -->
+    <path id="hexagon" d="M0,-10 L8.66,-5 L8.66,5 L0,10 L-8.66,5 L-8.66,-5 Z" fill="white" opacity="0.2"/>
+  </defs>
+  
+  <!-- Background gradient -->
+  <rect width="100%" height="100%" fill="url(#grad1)"/>
+  
+  <!-- Animated elements -->
+  <g>
+    <!-- Floating hexagons -->
+    <g>
+      <use href="#hexagon" transform="translate(100, 100) scale(2)">
+        <animate attributeName="opacity" values="0.2;0.1;0.2" dur="4s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="100,100; 110,110; 100,100" dur="6s" repeatCount="indefinite" additive="sum"/>
+        <animateTransform attributeName="transform" type="rotate" values="0;360" dur="20s" repeatCount="indefinite" additive="sum"/>
+      </use>
+      <use href="#hexagon" transform="translate(300, 200) scale(3)">
+        <animate attributeName="opacity" values="0.2;0.1;0.2" dur="5s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="300,200; 310,190; 300,200" dur="7s" repeatCount="indefinite" additive="sum"/>
+        <animateTransform attributeName="transform" type="rotate" values="0;-360" dur="25s" repeatCount="indefinite" additive="sum"/>
+      </use>
+      <use href="#hexagon" transform="translate(500, 300) scale(4)">
+        <animate attributeName="opacity" values="0.2;0.1;0.2" dur="6s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="500,300; 510,310; 500,300" dur="8s" repeatCount="indefinite" additive="sum"/>
+        <animateTransform attributeName="transform" type="rotate" values="0;360" dur="30s" repeatCount="indefinite" additive="sum"/>
+      </use>
+      <use href="#hexagon" transform="translate(700, 400) scale(3)">
+        <animate attributeName="opacity" values="0.2;0.1;0.2" dur="5s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="700,400; 710,390; 700,400" dur="7s" repeatCount="indefinite" additive="sum"/>
+        <animateTransform attributeName="transform" type="rotate" values="0;-360" dur="25s" repeatCount="indefinite" additive="sum"/>
+      </use>
+      <use href="#hexagon" transform="translate(900, 500) scale(2)">
+        <animate attributeName="opacity" values="0.2;0.1;0.2" dur="4s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="900,500; 910,510; 900,500" dur="6s" repeatCount="indefinite" additive="sum"/>
+        <animateTransform attributeName="transform" type="rotate" values="0;360" dur="20s" repeatCount="indefinite" additive="sum"/>
+      </use>
+    </g>
+    
+    <!-- Floating stars -->
+    <g>
+      <use href="#star" transform="translate(150, 150) scale(2)">
+        <animate attributeName="opacity" values="0.5;0.2;0.5" dur="3s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="150,150; 160,140; 150,150" dur="5s" repeatCount="indefinite" additive="sum"/>
+        <animateTransform attributeName="transform" type="rotate" values="0;360" dur="15s" repeatCount="indefinite" additive="sum"/>
+      </use>
+      <use href="#star" transform="translate(350, 250) scale(2.5)">
+        <animate attributeName="opacity" values="0.5;0.2;0.5" dur="4s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="350,250; 360,260; 350,250" dur="6s" repeatCount="indefinite" additive="sum"/>
+        <animateTransform attributeName="transform" type="rotate" values="0;-360" dur="18s" repeatCount="indefinite" additive="sum"/>
+      </use>
+      <use href="#star" transform="translate(550, 350) scale(3)">
+        <animate attributeName="opacity" values="0.5;0.2;0.5" dur="5s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="550,350; 560,340; 550,350" dur="7s" repeatCount="indefinite" additive="sum"/>
+        <animateTransform attributeName="transform" type="rotate" values="0;360" dur="21s" repeatCount="indefinite" additive="sum"/>
+      </use>
+      <use href="#star" transform="translate(750, 450) scale(2.5)">
+        <animate attributeName="opacity" values="0.5;0.2;0.5" dur="4s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="750,450; 760,460; 750,450" dur="6s" repeatCount="indefinite" additive="sum"/>
+        <animateTransform attributeName="transform" type="rotate" values="0;-360" dur="18s" repeatCount="indefinite" additive="sum"/>
+      </use>
+      <use href="#star" transform="translate(950, 550) scale(2)">
+        <animate attributeName="opacity" values="0.5;0.2;0.5" dur="3s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="950,550; 960,540; 950,550" dur="5s" repeatCount="indefinite" additive="sum"/>
+        <animateTransform attributeName="transform" type="rotate" values="0;360" dur="15s" repeatCount="indefinite" additive="sum"/>
+      </use>
+    </g>
+    
+    <!-- Floating dots -->
+    <g>
+      <use href="#dot" transform="translate(200, 100)">
+        <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="200,100; 210,110; 200,100" dur="4s" repeatCount="indefinite"/>
+      </use>
+      <use href="#dot" transform="translate(400, 200)">
+        <animate attributeName="opacity" values="0.7;0.3;0.7" dur="4s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="400,200; 410,190; 400,200" dur="5s" repeatCount="indefinite"/>
+      </use>
+      <use href="#dot" transform="translate(600, 300)">
+        <animate attributeName="opacity" values="0.7;0.3;0.7" dur="5s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="600,300; 610,310; 600,300" dur="6s" repeatCount="indefinite"/>
+      </use>
+      <use href="#dot" transform="translate(800, 400)">
+        <animate attributeName="opacity" values="0.7;0.3;0.7" dur="4s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="800,400; 810,390; 800,400" dur="5s" repeatCount="indefinite"/>
+      </use>
+      <use href="#dot" transform="translate(1000, 500)">
+        <animate attributeName="opacity" values="0.7;0.3;0.7" dur="3s" repeatCount="indefinite"/>
+        <animateTransform attributeName="transform" type="translate" values="1000,500; 1010,510; 1000,500" dur="4s" repeatCount="indefinite"/>
+      </use>
+    </g>
+  </g>
+</svg>

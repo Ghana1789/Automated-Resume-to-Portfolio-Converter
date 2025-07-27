@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block title %}FAQ - Portfolio Generator{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h1 class="display-4 mb-3">Frequently Asked Questions</h1>
+            <p class="lead">Find answers to common questions about using Portfolio Generator</p>
+        </div>
+    </div>
+
+    <!-- Getting Started Section -->
+    <div class="faq-section mb-5">
+        <h2 class="mb-4">Getting Started</h2>
+        <div class="accordion" id="gettingStartedAccordion">
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#howToStart">
+                        How do I get started with Portfolio Generator?
+                    </button>
+                </h3>
+                <div id="howToStart" class="accordion-collapse collapse show" data-bs-parent="#gettingStartedAccordion">
+                    <div class="accordion-body">
+                        Getting started is easy! Simply register for an account, log in, and upload your resume. Our AI-powered system will automatically generate a professional portfolio based on your resume content.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fileFormats">
+                        What file formats are supported for resume upload?
+                    </button>
+                </h3>
+                <div id="fileFormats" class="accordion-collapse collapse" data-bs-parent="#gettingStartedAccordion">
+                    <div class="accordion-body">
+                        We currently support PDF and DOCX file formats for resume uploads. These formats ensure the best parsing accuracy for our AI enhancement system.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Enhancement Section -->
+    <div class="faq-section mb-5">
+        <h2 class="mb-4">AI Enhancement Features</h2>
+        <div class="accordion" id="aiEnhancementAccordion">
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aiProcess">
+                        How does the AI enhancement process work?
+                    </button>
+                </h3>
+                <div id="aiProcess" class="accordion-collapse collapse" data-bs-parent="#aiEnhancementAccordion">
+                    <div class="accordion-body">
+                        Our AI system analyzes your resume content and enhances the descriptions of your experiences using advanced natural language processing. It maintains the authenticity of your achievements while making them more impactful and professional.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aiCustomization">
+                        Can I customize the AI-enhanced content?
+                    </button>
+                </h3>
+                <div id="aiCustomization" class="accordion-collapse collapse" data-bs-parent="#aiEnhancementAccordion">
+                    <div class="accordion-body">
+                        Yes! While our AI provides initial enhancements, you have full control to edit and customize the content to better match your preferences and professional voice.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Customization Section -->
+    <div class="faq-section mb-5">
+        <h2 class="mb-4">Portfolio Customization</h2>
+        <div class="accordion" id="customizationAccordion">
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#themes">
+                        What portfolio themes are available?
+                    </button>
+                </h3>
+                <div id="themes" class="accordion-collapse collapse" data-bs-parent="#customizationAccordion">
+                    <div class="accordion-body">
+                        We offer a variety of professional themes designed for different industries and preferences. Each theme is fully responsive and optimized for both desktop and mobile viewing.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sharing">
+                        How can I share my portfolio?
+                    </button>
+                </h3>
+                <div id="sharing" class="accordion-collapse collapse" data-bs-parent="#customizationAccordion">
+                    <div class="accordion-body">
+                        Once your portfolio is ready, you can easily share it using a unique URL. You can control the privacy settings to make your portfolio public or private as needed.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account & Security Section -->
+    <div class="faq-section mb-5">
+        <h2 class="mb-4">Account & Security</h2>
+        <div class="accordion" id="securityAccordion">
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#dataPrivacy">
+                        How is my data protected?
+                    </button>
+                </h3>
+                <div id="dataPrivacy" class="accordion-collapse collapse" data-bs-parent="#securityAccordion">
+                    <div class="accordion-body">
+                        We take data security seriously. Your resume and portfolio data are encrypted and stored securely. We never share your information with third parties without your explicit consent.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h3 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accountManagement">
+                        How do I manage my account settings?
+                    </button>
+                </h3>
+                <div id="accountManagement" class="accordion-collapse collapse" data-bs-parent="#securityAccordion">
+                    <div class="accordion-body">
+                        You can manage your account settings, including password changes and privacy preferences, through your dashboard. Look for the settings icon after logging in.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support Section -->
+    <div class="text-center mt-5">
+        <h3>Still have questions?</h3>
+        <p class="mb-4">Contact our support team for additional help</p>
+        <a href="#" class="btn btn-primary"><i class="fas fa-envelope me-2"></i>Contact Support</a>
+    </div>
+</div>
+
+<style>
+.faq-section {
+    background: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #f8f9fa;
+    color: #0d6efd;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(0, 0, 0, 0.125);
+}
+
+.accordion-button::after {
+    background-size: 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.accordion-button:not(.collapsed)::after {
+    transform: rotate(-180deg);
+}
+</style>
+{% endblock %}

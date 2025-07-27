@@ -1,0 +1,270 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Resume to Portfolio{% endblock %}
+
+{% block scripts %}
+<!-- Particles.js for animated background -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize particles.js
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 140,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+        
+        // Add AOS animations to elements
+        AOS.init({
+            duration: 1000,
+            once: true,
+            mirror: false
+        });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Animated Background -->
+<div class="hero-section">
+    <div id="particles-js" class="particles-container"></div>
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <h1 class="hero-title" data-aos="fade-right" data-aos-delay="100">Transform Your <span class="highlight">Resume</span> into a <span class="highlight">Professional Portfolio</span></h1>
+                <p class="hero-subtitle" data-aos="fade-right" data-aos-delay="200">Leverage our advanced AI technology to create a stunning portfolio that will impress potential employers and showcase your professional journey.</p>
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg btn-glow" data-aos="fade-up" data-aos-delay="300">Go to Dashboard</a>
+                {% else %}
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+                    <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg btn-glow me-md-3">Login</a>
+                    <a href="{{ url_for('register') }}" class="btn btn-outline-light btn-lg">Register</a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="hero-image-container" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="{{ url_for('static', filename='images/portfolio-preview.svg') }}" alt="Portfolio Preview" class="hero-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<section class="features-section">
+    <div class="container py-5">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Three simple steps to create your professional portfolio</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-upload"></i>
+                    </div>
+                    <h3 class="feature-title">Easy Upload</h3>
+                    <p class="feature-text">Simply upload your resume in PDF or DOCX format and let our intelligent system analyze your experience.</p>
+                    <div class="feature-number">1</div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="feature-title">AI Enhancement</h3>
+                    <p class="feature-text">Our advanced AI technology enhances your experience descriptions for maximum professional impact.</p>
+                    <div class="feature-number">2</div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="feature-title">Professional Portfolio</h3>
+                    <p class="feature-text">Get a beautifully formatted portfolio that you can customize and share with potential employers.</p>
+                    <div class="feature-number">3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section">
+    <div class="container py-5">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">What Our Users Say</h2>
+            <p class="section-subtitle">Success stories from professionals who transformed their careers</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"This tool helped me stand out in a competitive job market. The AI enhancements made my experience sound much more professional."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Sarah Johnson</h5>
+                            <p>Software Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"I received three interview calls within a week of sharing my new portfolio. The design is clean and professional."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Michael Chen</h5>
+                            <p>Marketing Specialist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The AI enhancement transformed my basic job descriptions into compelling achievement stories. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h5>Emily Rodriguez</h5>
+                            <p>Project Manager</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta-section">
+    <div class="container py-5 text-center">
+        <h2 class="cta-title" data-aos="fade-up">Ready to Transform Your Career?</h2>
+        <p class="cta-text" data-aos="fade-up" data-aos-delay="100">Join thousands of professionals who have enhanced their job prospects with our AI-powered portfolio generator.</p>
+        {% if current_user.is_authenticated %}
+        <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg btn-glow mt-3" data-aos="zoom-in" data-aos-delay="200">Go to Dashboard</a>
+        {% else %}
+        <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg btn-glow mt-3" data-aos="zoom-in" data-aos-delay="200">Get Started Now</a>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

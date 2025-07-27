@@ -1,0 +1,473 @@
+{% extends "base.html" %}
+
+{% block title %}{{ current_user.username }}'s Portfolio{% endblock %}
+
+{% block head %}
+<link href="{{ url_for('static', filename='css/portfolio.css') }}" rel="stylesheet">
+<script src="{{ url_for('static', filename='js/portfolio.js') }}" defer></script>
+{% endblock %}
+
+{% block body_attributes %}data-theme="{{ theme }}"{% endblock %}
+
+{% block content %}
+<div class="portfolio-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto text-center">
+                <h1 class="portfolio-title" data-aos="fade-down">{{ current_user.username }}'s Portfolio</h1>
+                {% if portfolio and portfolio.title %}
+                <p class="portfolio-subtitle lead" data-aos="fade-up" data-aos-delay="200">{{ portfolio.title }}</p>
+                {% endif %}
+                <div class="portfolio-actions" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#contact" class="btn btn-light btn-lg me-2"><i class="fas fa-envelope me-2"></i>Contact Me</a>
+                    <a href="#skills" class="btn btn-outline-light btn-lg me-2"><i class="fas fa-chart-bar me-2"></i>View Skills</a>
+                    <a href="#" class="btn btn-success btn-lg download-btn" id="downloadPortfolio"><i class="fas fa-download me-2"></i>Download CV</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+</div>
+
+<!-- Navigation is now handled by the sidebar -->
+
+<div class="container">
+    {% if portfolio %}
+        <div class="row">
+            <!-- Left sidebar with navigation links -->
+            <div class="col-md-3 portfolio-sidebar" data-aos="fade-right">
+                <div class="sidebar-nav">
+                    <div class="user-profile text-center mb-4">
+                        <div class="avatar-container">
+                            <div class="avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                        <h4 class="mt-3">{{ current_user.username }}</h4>
+                        {% if portfolio and portfolio.title %}
+                        <p class="text-muted">{{ portfolio.title }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="sidebar-section">
+                        <a href="#experience" class="sidebar-link active">
+                            <i class="fas fa-briefcase me-2"></i>Experience
+                        </a>
+                    </div>
+                    <div class="sidebar-section">
+                        <a href="#skills" class="sidebar-link">
+                            <i class="fas fa-chart-bar me-2"></i>Skills
+                        </a>
+                    </div>
+                    <div class="sidebar-section">
+                        <a href="#technical-skills" class="sidebar-link">
+                            <i class="fas fa-laptop-code me-2"></i>Technical Skills
+                        </a>
+                    </div>
+                    <div class="sidebar-section">
+                        <a href="#projects" class="sidebar-link">
+                            <i class="fas fa-project-diagram me-2"></i>Projects
+                        </a>
+                    </div>
+                    <div class="sidebar-section">
+                        <a href="#contact" class="sidebar-link">
+                            <i class="fas fa-envelope me-2"></i>Contact
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right content area -->
+            <div class="col-md-9 portfolio-content">
+                <section id="experience" class="mb-5" data-aos="fade-up">
+                    <div class="section-header" data-aos="fade-up">
+                        <h2 class="mb-4"><i class="fas fa-briefcase me-2"></i>Current Experience</h2>
+                        <div class="section-line"></div>
+                    </div>
+                    {% if current_experience %}
+                    <div class="experience-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="experience-header">
+                            {% if current_experience.company %}
+                            <h3 data-aos="fade-right" data-aos-delay="150">{{ current_experience.company }}</h3>
+                            {% endif %}
+                            {% if current_experience.position %}
+                            <h4 data-aos="fade-right" data-aos-delay="200">{{ current_experience.position }}</h4>
+                            {% endif %}
+                            {% if current_experience.duration %}
+                            <p class="text-muted" data-aos="fade-right" data-aos-delay="250"><i class="far fa-calendar-alt me-2"></i>{{ current_experience.duration }}</p>
+                            {% endif %}
+                        </div>
+                        <div class="mt-3">
+                            <h5 data-aos="fade-up" data-aos-delay="300">Professional Summary</h5>
+                            <p data-aos="fade-up" data-aos-delay="350">{{ current_experience.ai_enhanced_description }}</p>
+                            
+                            <!-- Extract and display keywords as tags -->
+                            {% if current_experience.ai_enhanced_description %}
+                            <div class="experience-tags" data-aos="fade-up" data-aos-delay="400">
+                                {% for keyword in current_experience.ai_enhanced_description|extract_keywords %}
+                                <span class="badge rounded-pill bg-light text-dark me-2 mb-2">{{ keyword }}</span>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="text-muted small">
+                            <em>Generated on: {% if current_experience.created_at_dt is defined %}{{ current_experience.created_at_dt.strftime('%Y-%m-%d %H:%M') }}{% else %}{{ current_experience.created_at }}{% endif %}</em>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info" data-aos="fade-up" data-aos-delay="100">
+                        <p>No experience data available. Please upload your resume to generate experience data.</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if false %}
+                    <!-- Experience History section removed as requested -->
+
+                                    <div class="accordion-body">
+                    {% endif %}
+                </section>
+
+                <section id="skills" class="skills-section mb-5" data-aos="fade-up">
+                    <div class="section-header" data-aos="fade-up">
+                        <h2 class="mb-4"><i class="fas fa-chart-bar me-2"></i>Skills & Expertise</h2>
+                        <div class="section-line"></div>
+                    </div>
+                    
+                    {% if portfolio and portfolio.skills %}
+                        {% set skills_data = portfolio.skills %}
+                        
+                        <!-- Technical Skills -->
+                        {% if skills_data and 'technical' in skills_data %}
+                        <div class="skill-category mb-5" data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="category-title"><i class="fas fa-code me-2"></i>Technical Skills</h3>
+                            <div class="skill-list">
+                                {% for skill in skills_data['technical'] %}
+                                <div class="skill-item" data-aos="fade-right" data-aos-delay="{{ loop.index * 50 + 150 }}">
+                                    <div class="skill-info">
+                                        <span class="skill-name">
+                                            {% if skill.name == 'Python' %}
+                                                <i class="devicon-python-plain colored me-2"></i>
+                                            {% elif skill.name == 'JavaScript' %}
+                                                <i class="devicon-javascript-plain colored me-2"></i>
+                                            {% elif skill.name == 'Java' %}
+                                                <i class="devicon-java-plain colored me-2"></i>
+                                            {% elif skill.name == 'C++' %}
+                                                <i class="devicon-cplusplus-plain colored me-2"></i>
+                                            {% elif skill.name == 'C#' %}
+                                                <i class="devicon-csharp-plain colored me-2"></i>
+                                            {% elif skill.name == 'Ruby' %}
+                                                <i class="devicon-ruby-plain colored me-2"></i>
+                                            {% elif skill.name == 'PHP' %}
+                                                <i class="devicon-php-plain colored me-2"></i>
+                                            {% elif skill.name == 'HTML' or skill.name == 'HTML5' %}
+                                                <i class="devicon-html5-plain colored me-2"></i>
+                                            {% elif skill.name == 'CSS' or skill.name == 'CSS3' %}
+                                                <i class="devicon-css3-plain colored me-2"></i>
+                                            {% elif skill.name == 'React' %}
+                                                <i class="devicon-react-original colored me-2"></i>
+                                            {% elif skill.name == 'Angular' %}
+                                                <i class="devicon-angularjs-plain colored me-2"></i>
+                                            {% elif skill.name == 'Vue' %}
+                                                <i class="devicon-vuejs-plain colored me-2"></i>
+                                            {% elif skill.name == 'Node.js' %}
+                                                <i class="devicon-nodejs-plain colored me-2"></i>
+                                            {% elif skill.name == 'Django' %}
+                                                <i class="devicon-django-plain me-2"></i>
+                                            {% elif skill.name == 'Flask' %}
+                                                <i class="devicon-flask-original me-2"></i>
+                                            {% elif skill.name == 'Docker' %}
+                                                <i class="devicon-docker-plain colored me-2"></i>
+                                            {% elif skill.name == 'Git' %}
+                                                <i class="devicon-git-plain colored me-2"></i>
+                                            {% else %}
+                                                <i class="fas fa-code me-2"></i>
+                                            {% endif %}
+                                            {{ skill.name }}
+                                        </span>
+                                        <span class="skill-level">{{ skill.level }}%</span>
+                                    </div>
+                                    <div class="progress skill-progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{ skill.level }}%;" 
+                                             aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <!-- Management Skills -->
+                        {% if 'management' in skills_data %}
+                        <div class="skill-category mb-5" data-aos="fade-up" data-aos-delay="200">
+                            <h3 class="category-title"><i class="fas fa-project-diagram me-2"></i>Project Management</h3>
+                            <div class="skill-list">
+                                {% for skill in skills_data['management'] %}
+                                <div class="skill-item" data-aos="fade-right" data-aos-delay="{{ loop.index * 50 + 250 }}">
+                                    <div class="skill-info">
+                                        <span class="skill-name">
+                                            {% if skill.name == 'Agile' or skill.name == 'Agile Methodology' %}
+                                                <i class="fas fa-sync-alt me-2"></i>
+                                            {% elif skill.name == 'Scrum' %}
+                                                <i class="fas fa-users-cog me-2"></i>
+                                            {% elif skill.name == 'Kanban' %}
+                                                <i class="fas fa-columns me-2"></i>
+                                            {% elif skill.name == 'Project Management' %}
+                                                <i class="fas fa-tasks me-2"></i>
+                                            {% elif skill.name == 'Team Leadership' or skill.name == 'Leadership' %}
+                                                <i class="fas fa-user-tie me-2"></i>
+                                            {% elif skill.name == 'Strategic Planning' or skill.name == 'Strategy' %}
+                                                <i class="fas fa-chess me-2"></i>
+                                            {% elif skill.name == 'Risk Management' %}
+                                                <i class="fas fa-shield-alt me-2"></i>
+                                            {% elif skill.name == 'Budgeting' or skill.name == 'Budget Management' %}
+                                                <i class="fas fa-dollar-sign me-2"></i>
+                                            {% elif skill.name == 'Resource Allocation' %}
+                                                <i class="fas fa-sitemap me-2"></i>
+                                            {% else %}
+                                                <i class="fas fa-clipboard-check me-2"></i>
+                                            {% endif %}
+                                            {{ skill.name }}
+                                        </span>
+                                        <span class="skill-level">{{ skill.level }}%</span>
+                                    </div>
+                                    <div class="progress skill-progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: {{ skill.level }}%" 
+                                             aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <!-- Leadership Skills -->
+                        {% if 'leadership' in skills_data %}
+                        <div class="skill-category mb-5" data-aos="fade-up" data-aos-delay="300">
+                            <h3 class="category-title"><i class="fas fa-users me-2"></i>Leadership</h3>
+                            <div class="skill-list">
+                                {% for skill in skills_data['leadership'] %}
+                                <div class="skill-item" data-aos="fade-right" data-aos-delay="{{ loop.index * 50 + 350 }}">
+                                    <div class="skill-info">
+                                        <span class="skill-name">
+                                            {% if skill.name == 'Team Leadership' or skill.name == 'Team Management' %}
+                                                <i class="fas fa-user-tie me-2"></i>
+                                            {% elif skill.name == 'Mentoring' or skill.name == 'Coaching' %}
+                                                <i class="fas fa-chalkboard-teacher me-2"></i>
+                                            {% elif skill.name == 'Conflict Resolution' %}
+                                                <i class="fas fa-handshake me-2"></i>
+                                            {% elif skill.name == 'Decision Making' %}
+                                                <i class="fas fa-balance-scale me-2"></i>
+                                            {% elif skill.name == 'Communication' %}
+                                                <i class="fas fa-comments me-2"></i>
+                                            {% elif skill.name == 'Delegation' %}
+                                                <i class="fas fa-tasks me-2"></i>
+                                            {% elif skill.name == 'Motivation' or skill.name == 'Team Motivation' %}
+                                                <i class="fas fa-fire me-2"></i>
+                                            {% elif skill.name == 'Strategic Thinking' or skill.name == 'Vision' %}
+                                                <i class="fas fa-lightbulb me-2"></i>
+                                            {% elif skill.name == 'Emotional Intelligence' or skill.name == 'EQ' %}
+                                                <i class="fas fa-heart me-2"></i>
+                                            {% else %}
+                                                <i class="fas fa-star me-2"></i>
+                                            {% endif %}
+                                            {{ skill.name }}
+                                        </span>
+                                        <span class="skill-level">{{ skill.level }}%</span>
+                                    </div>
+                                    <div class="progress skill-progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" style="width: {{ skill.level }}%" 
+                                             aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% else %}
+                        <!-- Default skills display when no skills are extracted -->
+                        <div class="skill-category mb-5" data-aos="fade-up" data-aos-delay="100">
+                            <h3 class="category-title"><i class="fas fa-code me-2"></i>Technical Skills</h3>
+                            <div class="skill-list">
+                                <div class="skill-item" data-aos="fade-right" data-aos-delay="150">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Python</span>
+                                        <span class="skill-level">90%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 90%" 
+                                             aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item" data-aos="fade-right" data-aos-delay="200">
+                                    <div class="skill-info">
+                                        <span class="skill-name">JavaScript</span>
+                                        <span class="skill-level">85%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 85%" 
+                                             aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info" data-aos="fade-up" data-aos-delay="250">
+                            <p>Upload your resume to generate personalized skills based on your experience.</p>
+                        </div>
+                    {% endif %}
+                </section>
+
+                <!-- Projects Section -->
+                <section id="projects" class="mb-5" data-aos="fade-up">
+                    <div class="section-header" data-aos="fade-up">
+                        <h2 class="mb-4"><i class="fas fa-project-diagram me-2"></i>Projects</h2>
+                        <div class="section-line"></div>
+                    </div>
+                    
+                    <div class="projects-container">
+                        <div class="row">
+                            <!-- Project cards will be dynamically generated based on portfolio data -->
+                            <!-- For now, we'll add some sample projects -->
+                            <div class="col-md-6 mb-4" data-aos="flip-left" data-aos-delay="100" data-aos-duration="800">
+                                <div class="project-card">
+                                    <div class="project-image" style="background-color: #4285f4;">
+                                        <i class="fas fa-code fa-3x project-icon"></i>
+                                        <div class="project-overlay">
+                                            <div class="project-type">Web Application</div>
+                                        </div>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="project-title">Portfolio Generator</h3>
+                                        <p class="project-description">An AI-powered tool that converts resumes into professional portfolios with customizable themes.</p>
+                                        <div class="project-tech">
+                                            <span class="badge bg-primary text-white"><i class="fab fa-python me-1"></i>Python</span>
+                                            <span class="badge bg-info text-white"><i class="fab fa-flask me-1"></i>Flask</span>
+                                            <span class="badge bg-success text-white"><i class="fas fa-robot me-1"></i>AI</span>
+                                            <span class="badge bg-secondary text-white"><i class="fab fa-bootstrap me-1"></i>Bootstrap</span>
+                                        </div>
+                                        <div class="project-links">
+                                            <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
+                                            <a href="#" class="btn btn-sm btn-outline-secondary"><i class="fab fa-github me-1"></i>Source Code</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6 mb-4" data-aos="flip-right" data-aos-delay="200" data-aos-duration="800">
+                                <div class="project-card">
+                                    <div class="project-image" style="background-color: #ea4335;">
+                                        <i class="fas fa-mobile-alt fa-3x project-icon"></i>
+                                        <div class="project-overlay">
+                                            <div class="project-type">Mobile Application</div>
+                                        </div>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="project-title">Mobile App</h3>
+                                        <p class="project-description">A cross-platform mobile application for productivity and task management.</p>
+                                        <div class="project-tech">
+                                            <span class="badge bg-primary text-white"><i class="fab fa-react me-1"></i>React Native</span>
+                                            <span class="badge bg-danger text-white"><i class="fas fa-fire me-1"></i>Firebase</span>
+                                            <span class="badge bg-info text-white"><i class="fas fa-code-branch me-1"></i>Redux</span>
+                                        </div>
+                                        <div class="project-links">
+                                            <a href="#" class="btn btn-sm btn-primary"><i class="fas fa-external-link-alt me-1"></i>Live Demo</a>
+                                            <a href="#" class="btn btn-sm btn-outline-secondary"><i class="fab fa-github me-1"></i>Source Code</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="contact" class="contact-section">
+                    <div class="contact-info">
+                        <div class="section-header" data-aos="fade-up">
+                            <h2 class="mb-4"><i class="fas fa-envelope me-2"></i>Get in Touch</h2>
+                            <div class="section-line"></div>
+                        </div>
+                        
+                        {% if portfolio and portfolio.contact_info %}
+                            {% set contact_data = portfolio.contact_info %}
+                            
+                            <div class="contact-grid">
+                                {% if contact_data.email %}
+                                <div class="contact-item" data-aos="zoom-in" data-aos-delay="100">
+                                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                                    <div class="contact-text">
+                                        <h3>Email</h3>
+                                        <p><a href="mailto:{{ contact_data.email }}">{{ contact_data.email }}</a></p>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="contact-item" data-aos="zoom-in" data-aos-delay="100">
+                                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                                    <div class="contact-text">
+                                        <h3>Email</h3>
+                                        <p><a href="mailto:{{ current_user.email }}">{{ current_user.email }}</a></p>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                
+                                {% if contact_data.phone %}
+                                <div class="contact-item" data-aos="zoom-in" data-aos-delay="200">
+                                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                                    <div class="contact-text">
+                                        <h3>Phone</h3>
+                                        <p><a href="tel:{{ contact_data.phone }}">{{ contact_data.phone }}</a></p>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                
+                                {% if contact_data.linkedin %}
+                                <div class="contact-item" data-aos="zoom-in" data-aos-delay="300">
+                                    <div class="contact-icon"><i class="fab fa-linkedin"></i></div>
+                                    <div class="contact-text">
+                                        <h3>LinkedIn</h3>
+                                        <p><a href="{{ contact_data.linkedin }}" target="_blank">View Profile</a></p>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                
+                                {% if contact_data.website %}
+                                <div class="contact-item" data-aos="zoom-in" data-aos-delay="400">
+                                    <div class="contact-icon"><i class="fas fa-globe"></i></div>
+                                    <div class="contact-text">
+                                        <h3>Website</h3>
+                                        <p><a href="{{ contact_data.website }}" target="_blank">{{ contact_data.website }}</a></p>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        {% else %}
+                            <div class="contact-grid">
+                                <div class="contact-item" data-aos="zoom-in" data-aos-delay="100">
+                                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                                    <div class="contact-text">
+                                        <h3>Email</h3>
+                                        <p><a href="mailto:{{ current_user.email }}">{{ current_user.email }}</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-info mt-4" data-aos="fade-up" data-aos-delay="200">
+                                <p><i class="fas fa-info-circle me-2"></i>Upload your resume to extract more contact information.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </section>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <h4 class="alert-heading">Portfolio Not Generated</h4>
+            <p>Please upload your resume from the dashboard to generate your portfolio.</p>
+            <hr>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Go to Dashboard</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

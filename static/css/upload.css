@@ -1,0 +1,117 @@
+:root {
+    --upload-border-color: #ddd;
+    --upload-border-active: var(--primary-color);
+    --upload-bg: var(--card-bg);
+    --progress-bg: #e9ecef;
+    --progress-color: var(--primary-color);
+}
+
+.upload-container {
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.upload-zone {
+    border: 2px dashed var(--upload-border-color);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    background: var(--upload-bg);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-zone.drag-over {
+    border-color: var(--upload-border-active);
+    background: rgba(var(--primary-color-rgb), 0.05);
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.upload-text {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.file-types {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.upload-progress {
+    width: 100%;
+    height: 4px;
+    background: var(--progress-bg);
+    border-radius: 2px;
+    margin-top: 1rem;
+    overflow: hidden;
+    display: none;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--progress-color);
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+.upload-error {
+    color: var(--danger);
+    margin-top: 1rem;
+    display: none;
+}
+
+.upload-success {
+    color: var(--success);
+    margin-top: 1rem;
+    display: none;
+}
+
+.file-preview {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    background: var(--card-bg);
+    border-radius: 4px;
+    margin-top: 1rem;
+    box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.file-preview-icon {
+    margin-right: 0.5rem;
+    color: var(--primary-color);
+}
+
+.file-preview-name {
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-preview-remove {
+    cursor: pointer;
+    color: var(--danger);
+    padding: 0.25rem;
+}
+
+@keyframes upload-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.uploading .upload-icon {
+    animation: upload-pulse 1s infinite;
+}

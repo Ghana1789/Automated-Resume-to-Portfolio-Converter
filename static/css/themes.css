@@ -1,0 +1,125 @@
+:root {
+    /* Default Theme */
+    --primary-color: #2980b9;
+    --primary-color-rgb: 41, 128, 185;
+    --secondary-color: #2c3e50;
+    --secondary-color-rgb: 44, 62, 80;
+    --text-color: #333;
+    --text-color-rgb: 51, 51, 51;
+    --bg-color: #ffffff;
+    --bg-color-rgb: 255, 255, 255;
+    --card-bg: #ffffff;
+    --card-bg-rgb: 255, 255, 255;
+    --header-bg: #f8f9fa;
+    --header-bg-rgb: 248, 249, 250;
+    --border-color: #eee;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --hover-color: rgba(255, 255, 255, 0.1);
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --primary-color: #61dafb;
+    --primary-color-rgb: 97, 218, 251;
+    --secondary-color: #282c34;
+    --secondary-color-rgb: 40, 44, 52;
+    --text-color: #ffffff;
+    --text-color-rgb: 255, 255, 255;
+    --bg-color: #1a1a1a;
+    --bg-color-rgb: 26, 26, 26;
+    --card-bg: #282c34;
+    --card-bg-rgb: 40, 44, 52;
+    --header-bg: #21252b;
+    --header-bg-rgb: 33, 37, 43;
+    --border-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --hover-color: rgba(255, 255, 255, 0.05);
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
+}
+
+/* Nature Theme */
+[data-theme="nature"] {
+    --primary-color: #4CAF50;
+    --primary-color-rgb: 76, 175, 80;
+    --secondary-color: #2E7D32;
+    --secondary-color-rgb: 46, 125, 50;
+    --text-color: #333;
+    --text-color-rgb: 51, 51, 51;
+    --bg-color: #f5f9f5;
+    --bg-color-rgb: 245, 249, 245;
+    --card-bg: #ffffff;
+    --card-bg-rgb: 255, 255, 255;
+    --header-bg: #e8f5e9;
+    --header-bg-rgb: 232, 245, 233;
+    --border-color: #c8e6c9;
+    --shadow-color: rgba(76, 175, 80, 0.1);
+    --hover-color: rgba(76, 175, 80, 0.05);
+    --border-radius: 12px;
+    --transition-speed: 0.3s;
+}
+
+/* Professional Theme */
+[data-theme="professional"] {
+    --primary-color: #0d47a1;
+    --primary-color-rgb: 13, 71, 161;
+    --secondary-color: #1a237e;
+    --secondary-color-rgb: 26, 35, 126;
+    --text-color: #212121;
+    --text-color-rgb: 33, 33, 33;
+    --bg-color: #f5f5f5;
+    --bg-color-rgb: 245, 245, 245;
+    --card-bg: #ffffff;
+    --card-bg-rgb: 255, 255, 255;
+    --header-bg: #e3f2fd;
+    --header-bg-rgb: 227, 242, 253;
+    --border-color: #bbdefb;
+    --shadow-color: rgba(13, 71, 161, 0.1);
+    --hover-color: rgba(13, 71, 161, 0.05);
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+    --accent-color: #42a5f5;
+    --accent-color-rgb: 66, 165, 245;
+}
+
+/* Apply theme variables */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.navbar {
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+}
+
+.card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.card-header {
+    background-color: var(--header-bg);
+    border-bottom-color: var(--border-color);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.footer {
+    background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+}
+
+.nav-link:hover {
+    background-color: var(--hover-color);
+}

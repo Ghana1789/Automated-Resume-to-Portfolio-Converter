@@ -1,0 +1,264 @@
+/* Particles Container */
+.particles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.hero-section {
+    position: relative;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Features Section Styles */
+.features-section {
+    padding: 5rem 0;
+    background-color: var(--bg-color);
+}
+
+.section-header {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.feature-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    height: 100%;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px var(--shadow-color);
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, transparent 100%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    border-radius: 12px;
+}
+
+.feature-card:hover::before {
+    opacity: 0.05;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1);
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.feature-text {
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.feature-number {
+    position: absolute;
+    bottom: 1rem;
+    right: 1.5rem;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    opacity: 0.1;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-number {
+    opacity: 0.2;
+    transform: scale(1.2);
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    background-color: var(--header-bg);
+    padding: 5rem 0;
+}
+
+.testimonial-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px var(--shadow-color);
+}
+
+.testimonial-content {
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-top: 1.5rem;
+}
+
+.testimonial-content::before {
+    content: '\201C';
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    font-size: 5rem;
+    color: var(--primary-color);
+    opacity: 0.2;
+    font-family: Georgia, serif;
+}
+
+.testimonial-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.testimonial-info h5 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.testimonial-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* Call to Action Section */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.3;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.cta-text {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-section {
+        padding: 3rem 0;
+    }
+    
+    .feature-card {
+        margin-bottom: 2rem;
+    }
+    
+    .testimonial-card {
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .cta-title {
+        font-size: 2rem;
+    }
+}

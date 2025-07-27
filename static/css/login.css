@@ -1,0 +1,383 @@
+.login-container,
+.register-container {
+    max-width: 500px;
+    margin: 4rem auto;
+    padding: 2.5rem;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.login-icon,
+.register-icon {
+    display: inline-block;
+    margin-right: 10px;
+    color: var(--primary-color);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.login-container::before,
+.register-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color, #e74c3c));
+}
+
+.login-form,
+.register-form {
+    margin-top: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.form-group,
+.form-floating-group {
+    margin-bottom: 1.8rem;
+    position: relative;
+}
+
+.form-floating-group .input-group {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+}
+
+.form-floating-group .input-group:focus-within {
+    box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.2);
+    transform: translateY(-3px);
+}
+
+.form-floating-group .input-group-text {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+    border-right: none;
+}
+
+.animated-link {
+    position: relative;
+    display: inline-block;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.animated-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.animated-link:hover {
+    color: var(--secondary-color);
+}
+
+.animated-link:hover::after {
+    width: 100%;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    display: block;
+}
+
+.form-control {
+    border-radius: var(--border-radius);
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.15);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.form-control::placeholder {
+    color: rgba(var(--text-color-rgb), 0.5);
+    font-size: 0.95rem;
+}
+
+.btn-login,
+.btn-register,
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn-login::before,
+.btn-register::before,
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+    transition: all 0.5s ease;
+    z-index: -1;
+}
+
+.btn-hover-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 1%, rgba(255,255,255,0.1) 1%) center/15000%;
+    opacity: 0;
+    transition: background 0.5s, opacity 0.5s;
+}
+
+.btn-login:active .btn-hover-effect,
+.btn-register:active .btn-hover-effect,
+.btn-primary:active .btn-hover-effect {
+    background-size: 100%;
+    opacity: 1;
+    transition: 0s;
+}
+
+.btn-login:hover::before,
+.btn-register:hover::before,
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-login:hover,
+.btn-register:hover,
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(var(--primary-color-rgb), 0.2);
+    animation: buttonPulse 1.5s infinite;
+}
+
+@keyframes buttonPulse {
+    0% {
+        box-shadow: 0 7px 14px rgba(var(--primary-color-rgb), 0.2);
+    }
+    50% {
+        box-shadow: 0 7px 20px rgba(var(--primary-color-rgb), 0.4);
+    }
+    100% {
+        box-shadow: 0 7px 14px rgba(var(--primary-color-rgb), 0.2);
+    }
+}
+
+.btn-login:active,
+.btn-register:active,
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    background-color: rgba(var(--card-bg-rgb, 255, 255, 255), 0.85);
+}
+
+/* Toggle Password Button */
+#togglePassword {
+    cursor: pointer;
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+    border-color: var(--border-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+#togglePassword:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+}
+
+#togglePassword:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+/* Forgot Password Link */
+.forgot-password-link {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.forgot-password-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.forgot-password-link:hover {
+    color: var(--primary-color);
+}
+
+.forgot-password-link:hover::after {
+    width: 100%;
+}
+
+/* Modal Styling */
+.modal-content {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    animation: modalFadeIn 0.3s ease;
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(var(--primary-color-rgb), 0.1);
+    padding: 1.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card:hover {
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.register-link {
+    opacity: 0;
+    animation: fadeIn 0.6s ease 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Password Strength Meter */
+.password-strength {
+    margin-top: 8px;
+}
+
+.password-strength .progress {
+    height: 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
+.password-strength .progress-bar {
+    border-radius: 5px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.password-strength .form-text {
+    font-size: 0.8rem;
+    transition: color 0.3s ease;
+}
+
+/* Background and Animation */
+body {
+    position: relative;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+}
+
+body.login-page {
+    background: url('../images/login-bg-animated.svg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+body.register-page {
+    background: url('../images/register-bg-animated.svg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.login-container,
+.register-container {
+    animation: fadeIn 0.5s ease forwards;
+    backdrop-filter: blur(5px);
+    background-color: rgba(var(--card-bg-rgb, 255, 255, 255), 0.85);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    .login-container,
+    .register-container {
+        margin: 2rem auto;
+        padding: 2rem 1.5rem;
+    }
+}

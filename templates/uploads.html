@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Resume - Resume to Portfolio{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1 class="mb-4">Upload Your Resume</h1>
+            
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            <div class="card upload-container">
+                <div class="card-body">
+                    <form id="uploadForm" action="{{ url_for('upload_resume') }}" method="post" enctype="multipart/form-data">
+                        <div class="upload-zone" id="dropZone">
+                            <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                            <div class="upload-text">
+                                <h4>Drag and drop your resume here</h4>
+                                <p>or click to browse files</p>
+                            </div>
+                            <div class="file-types">Accepted formats: PDF, DOCX (Max size: 5MB)</div>
+                            <input type="file" class="d-none" id="resume" name="resume" accept=".pdf,.docx" required>
+                        </div>
+                        
+                        <div class="file-preview" id="filePreview" style="display: none;">
+                            <i class="fas fa-file-alt file-preview-icon"></i>
+                            <span class="file-preview-name" id="fileName"></span>
+                            <i class="fas fa-times file-preview-remove" id="removeFile"></i>
+                        </div>
+                        
+                        <div class="upload-progress" id="uploadProgress">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                        
+                        <div class="upload-error" id="uploadError"></div>
+                        <div class="upload-success" id="uploadSuccess"></div>
+                        
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg" id="uploadButton" disabled>
+                                <i class="fas fa-upload me-2"></i>Upload Resume
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <p class="text-muted">After uploading, our AI will analyze your resume and create a professional portfolio.</p>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-link">Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
